@@ -107,18 +107,37 @@ def run_slots():
             CReel00 = ReelMatrix[0, 0]
             CReel01 = ReelMatrix[0, 1]
             CReel02 = ReelMatrix[0, 2]
+            CReel10 = ReelMatrix[1, 0]
+            CReel11 = ReelMatrix[1, 1]
+            CReel12 = ReelMatrix[1, 2]
+            CReel20 = ReelMatrix[2, 0]
+            CReel21 = ReelMatrix[2, 1]
+            CReel22 = ReelMatrix[2, 2]
+
 
 # Give me the symbol
 
             Reel11 = CReel00.character
             Reel12 = CReel01.character
             Reel13 = CReel02.character
+            Reel21 = CReel10.character
+            Reel22 = CReel11.character
+            Reel23 = CReel12.character
+            Reel31 = CReel20.character
+            Reel32 = CReel21.character
+            Reel33 = CReel22.character
 
 # Give me the color
 
             ColorR11 = CReel00.hue
             ColorR12 = CReel01.hue
             ColorR13 = CReel02.hue
+            ColorR21 = CReel10.hue
+            ColorR22 = CReel11.hue
+            ColorR23 = CReel12.hue
+            ColorR31 = CReel20.hue
+            ColorR32 = CReel21.hue
+            ColorR33 = CReel22.hue
 
             print("\n-----Current Bet: ${}-----\n".format(active_bet))
             for c in Reel11:
@@ -129,7 +148,28 @@ def run_slots():
                 print(" |",  colored(c, ColorR12), end=' | ', flush=True)
             for c in Reel13:
                 time.sleep(0.4)
-                print(" |",  colored(c, ColorR13), end=' | ', flush=True)
+                print(" |",  colored(c, ColorR23), end=' | ', flush=True)
+            print("\n")
+            for c in Reel21:
+                time.sleep(0.4)
+                print(" |", colored(c, ColorR21), end=' | ', flush=True)
+            for c in Reel22:
+                time.sleep(0.4)
+                print(" |", colored(c, ColorR22), end=' | ', flush=True)
+            for c in Reel23:
+                time.sleep(0.4)
+                print(" |", colored(c, ColorR13), end=' | ', flush=True)
+            print("\n")
+            for c in Reel31:
+                time.sleep(0.4)
+                print(" |", colored(c, ColorR31), end=' | ', flush=True)
+            for c in Reel32:
+                time.sleep(0.4)
+                print(" |", colored(c, ColorR32), end=' | ', flush=True)
+            for c in Reel33:
+                time.sleep(0.4)
+                print(" |", colored(c, ColorR33), end=' | ', flush=True)
+
             print("\n")
             print("----------------------------")
         else:
