@@ -212,7 +212,7 @@ def run_slots():
 
 def start():
     global stake
-    print("\nWelcome to ", colored("Dirty Slot",'red'))
+    print("\nWelcome to ", colored("Dirty Slot", 'red'))
     command = input("We've given you $10,000 to start. \n\nPRESS [ENTER] TO BEGIN ")
     if command == "":
         stake = 10000
