@@ -22,14 +22,14 @@ Reel13 = ''
 
 ReelMatrix = np.empty(3)
 
-
 class Symbols:
 
-    def __init__(self, name, character, payout, hue):
+    def __init__(self, name, character, payout, hue, Attr):
         self.name = name
         self.character = character
         self.payout = payout
         self.hue = hue
+        self.Attr = Attr
 
     def show(self):
         print(self.character)
@@ -41,14 +41,14 @@ class Symbols:
         return self.character
 
 
-instances = [Symbols('Circle', "0", 25, 'red'), Symbols('Plus', "+", 50, 'cyan'), Symbols('Cross', "X", 100, 'yellow'), Symbols('Seven', "7", 1000, 'green')]
+instances = [Symbols('Circle', "0", 50, 'red', 'bold'), Symbols('Plus', "+", 100, 'cyan', 'bold'), Symbols('Cross', "X", 250, 'yellow', 'bold'), Symbols('Seven', "7", 1000, 'green', 'blink')]
 
 
 # checking list
 
 
-for obj in instances:
-    print(obj.name, obj.character, obj.payout, obj.hue)
+# for obj in instances:
+#    print(obj.name, obj.character, obj.payout, obj.hue)
 
 
 # Debug testing the printing of each reel with independent probabilities
@@ -141,6 +141,8 @@ def run_slots():
             ColorR32 = CReel21.hue
             ColorR33 = CReel22.hue
 
+
+
             print("\n-----Current Bet: ${}-----\n".format(active_bet))
             for c in Reel11:
                 time.sleep(0.4)
@@ -177,15 +179,20 @@ def run_slots():
 
         for i in range(ReelMatrix.shape[0]):
             if np.all(ReelMatrix[i] == ReelMatrix[i][0]):
-                print('Row Check for Win: ', i)
                 WinningSymbol = ReelMatrix[i][0]
                 WinningAmount = WinningSymbol.payout
                 positivebalance = WinningAmount * 3
-                stake += positivebalance
+                stake += positivebalance + active_bet
 
                 print("You won $", positivebalance)
                 print("Current Balance: $", stake)
 
+                reviewcheck = random.randint(0, 5)
+                print(reviewcheck)
+                if reviewcheck == 5:
+                    print("Please take a moment to review us in the AppStore.  Your chance of winning definitely won't be affected if you don't")
+                else:
+                    pass
                 run_slots()
             else:
                 pass
@@ -205,8 +212,8 @@ def run_slots():
 
 def start():
     global stake
-    print("\nWelcome to Python Slots")
-    command = input("YOU START WITH $10,000! \n\nPRESS [ENTER] TO BEGIN ")
+    print("\nWelcome to ", colored("Dirty Slot",'red'))
+    command = input("We've given you $10,000 to start. \n\nPRESS [ENTER] TO BEGIN ")
     if command == "":
         stake = 10000
         run_slots()
